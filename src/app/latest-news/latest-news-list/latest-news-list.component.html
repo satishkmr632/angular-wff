@@ -1,0 +1,23 @@
+<!-- <p>
+  latest news list works
+</p> -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success">Latest News</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <a
+      style="cursor: pointer;"
+      class="list-group-item clearfix"
+      *ngFor="let newsitem of latestnews">
+      <div class="pull-left">
+        <h4 class="list-group-item-heading">{{ newsitem.heading }}</h4>
+        <p class="list-group-item-text">{{ newsitem.text }}</p>
+      </div><hr>
+    </a>
+  </div>
+</div>

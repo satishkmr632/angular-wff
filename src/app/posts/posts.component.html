@@ -1,0 +1,101 @@
+<!-- <div class="row">
+  <div class="col-md-5">
+    <app-post-list></app-post-list>
+  </div>
+  <div class="col-md-7">
+    <app-post-detail></app-post-detail>
+    <router-outlet></router-outlet>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="reglist">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Title</th>
+          <th>Text</th>
+          <th>Created_by</th>
+          <th>Created_at</th>
+                    
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of posts; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <!-- <td>{{ post.author }}</td> -->
+          <td>{{ post.title }}</td>
+          <td>{{ post.text }}</td>
+          <td>{{ post.author.username }}</td>
+          <td>{{ post.created_date }}</td>
+          
+          <td>
+            <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-right">
+      <button type="submit" class="btn btn-success" (click)="onNew()">New</button>
+    </div>
+  </div>
+  <br>
+  <div class="regentry" *ngIf="showNew">
+    <!-- <form (ngSubmit)="add()">
+      <div class="form-group row">
+        <label for="firstname-input" class="col-2 col-form-label">Title</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="editPost.title" name="title">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="lastname-input" class="col-2 col-form-label">Text</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="editPost.text" name="text">
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-success">Save</button>
+      <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+    </form> -->
+    <form>
+      <div class="form-group row">
+        <label class="col-2 col-form-label"> Title: </label>
+        <div class="col-10">
+          <input class="form-control" type="text" #titleName />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-2 col-form-label"> text: </label>
+        <div class="col-10">
+          <input class="form-control" type="textarea" #textDetail />
+        </div>
+      </div>
+
+      
+
+      <!-- <div class="form-group row">
+        <label class="col-2 col-form-label"> Author: </label>
+        <div class="col-10">
+          <input type="hidden" name="author" value="{{ request.user.id }}" #authorDetail>
+        </div>
+      </div> -->
+        
+
+      <!-- <button class="btn btn-success" (click)="add(titleName.value, textDetail.value)">
+        Save
+      </button> -->
+      
+      <button class="btn btn-success" (click)="add(titleName.value, textDetail.value);titleName.value=''; textDetail.value=''">
+        Save
+      </button>
+    </form>
+  </div>
+</div>
